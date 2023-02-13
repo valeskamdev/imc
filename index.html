@@ -11,19 +11,21 @@
     <main>
         <div class="content">
             <button class="reset-button">Resetar</button>
-            <img src="assets/9175098_6454-removebg.png" alt="imc-image">
-
-            <h1>Calcule seu IMC</h1>
+            <h1 class="title-imc">Calcule seu IMC</h1>
             
-            <label class="label">Peso:
-            <input type="text" class="peso" maxlength="4" placeholder="kg">
-       
             <label class="label">Altura:
-            <input type="text" class="altura" maxlength="4" placeholder="cm">
+            <input type="number" class="height"  placeholder="1.80" required>
+
+            <label class="label">Peso:
+            <input type="number" class="weight"  placeholder="70.00" required>
+       
             <div class="content-button">
                 <button class="calculate-button">Calcular</button>
             </div>
+
+            <div class="result"></div>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
