@@ -28,6 +28,48 @@ const calculateIMC = () => {
     }
 }
 
+const formatHeight = (event) => {
+    const valueEvent = event.target.value;
+    const numericValue = valueEvent.replace(/\D/g, '');
+  
+    if (numericValue.length < 3) {
+      event.target.value = numericValue;
+      return;
+    }
+  
+    const firstPart = numericValue.slice(0, 1);
+    const secondPart = numericValue.slice(1);
+    const formattedHeight = `${firstPart}.${secondPart}`;
+    event.target.value = formattedHeight;
+}
+
+const formatWeight = (event) => {
+    const valueEvent = event.target.value;
+    const numericValue = valueEvent.replace(/\D/g, ''); // remove todos os caracteres não numéricos
+
+
+    if (numericValue.length < 3) {
+        event.target.value = numericValue;
+        return;
+    }
+
+    let formattedValue;
+    if (numericValue.length === 2) {
+        const firstPart = numericValue.slice(0, 2);
+        formattedValue = `${firstPart}`;
+    } else if (numericValue.length === 5) {
+        const firstPart = numericValue.slice(0, 3);
+        const secondPart = numericValue.slice(3);
+        formattedValue = `${firstPart}.${secondPart}`;
+    } else {
+        const firstPart = numericValue.slice(0, 2);
+        const secondPart = numericValue.slice(2, 5);
+        const thirdPart = numericValue.slice(5);
+        formattedValue = `${firstPart}.${secondPart}${thirdPart}`;
+    }
+    event.target.value = formattedValue;
+}
+
 const resetData = () => {
     inputWeight.value = "";
     inputHeight.value = "";
@@ -36,3 +78,5 @@ const resetData = () => {
 
 calculateButton.addEventListener('click', calculateIMC);
 resetButton.addEventListener('click', resetData);
+inputHeight.addEventListener('input', formatHeight);
+inputWeight.addEventListener('input', formatWeight);
